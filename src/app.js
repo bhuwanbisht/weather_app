@@ -66,14 +66,14 @@ app.get('/weather', (req, res) => {
                 error
             });
         } 
-        forecast(latitude, longitude, function(errorForecast, { descriptions, temperature, feelslike} = {}) {
+        forecast(latitude, longitude, function(errorForecast, { descriptions, temperature, feelslike, humidity} = {}) {
             if(errorForecast) {
                 return res.send({
                     error: errorForecast
                 });
             }
             res.send({
-                'forecast': `${descriptions}. It is currently ${temperature} degress out. If feels like ${feelslike} degree out.`,
+                'forecast': `${descriptions}. It is currently ${temperature} degress out. If feels like ${feelslike} degree out. There is humidity of ${humidity}`,
                 'location': placeName,
                 'address' : address
             });
